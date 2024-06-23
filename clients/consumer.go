@@ -27,7 +27,7 @@ type consumerConfig struct {
 	brokers  string `default:""`
 	version  string `default:""`
 	group    string `default:""`
-	topics   string `default:""`
+	topic    string `default:""`
 	assignor string `default:""`
 	oldest   bool
 	verbose  bool
@@ -94,7 +94,7 @@ func runConsumer(cfg consumerConfig) {
 			// `Consume` should be called inside an infinite loop, when a
 			// server-side rebalance happens, the consumer session will need to be
 			// recreated to get the new claims
-			if err := client.Consume(ctx, strings.Split(cfg.topics, ","), &consumer); err != nil {
+			if err := client.Consume(ctx, strings.Split(cfg.topic, ","), &consumer); err != nil {
 				if errors.Is(err, sarama.ErrClosedConsumerGroup) {
 					return
 				}
@@ -143,7 +143,7 @@ func readConsumerConfig(cfgFile string) consumerConfig {
 		brokers:  viper.GetString("KAFKA_BROKERS"),
 		version:  viper.GetString("KAFKA_VERSION"),
 		group:    viper.GetString("KAFKA_CONSUMER_GROUP"),
-		topics:   viper.GetString("KAFKA_TOPIC"),
+		topic:    viper.GetString("KAFKA_TOPIC"),
 		assignor: viper.GetString("KAFKA_ASSIGNOR"),
 		oldest:   viper.GetBool("KAFKA_OLDEST"),
 		verbose:  viper.GetBool("KAFKA_VERBOSE"),

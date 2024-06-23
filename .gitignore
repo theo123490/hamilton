@@ -2,3 +2,4 @@
 .hamilton.env
 hamilton
 kafka-client-cli
+*.env
