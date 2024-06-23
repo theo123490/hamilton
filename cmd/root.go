@@ -15,7 +15,7 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "kafka-client-cli",
+	Use:   "hamilton",
 	Short: "A simple kafka client cli to produce and consume",
 	Long:  `A simple kafka client cli to produce and consume`,
 	// Uncomment the following line if your bare application
@@ -39,7 +39,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.kafka-client-cli.env)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.hamilton.env)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -56,10 +56,10 @@ func initConfig() {
 		home, err := os.UserHomeDir()
 		cobra.CheckErr(err)
 
-		// Search config in home directory with name ".kafka-client-cli" (without extension).
+		// Search config in home directory with name ".hamilton" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigType("env")
-		viper.SetConfigName(".kafka-client-cli")
+		viper.SetConfigName(".hamilton")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match

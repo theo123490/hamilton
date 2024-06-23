@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/theo123490/kafka-client-cli/clients"
+	"github.com/theo123490/hamilton/clients"
 )
 
 // runCmd represents the run command
@@ -24,7 +24,7 @@ var runCmd = &cobra.Command{
 			fmt.Printf("using Config file %s\n", cfgFile)
 			viper.SetConfigFile(cfgFile)
 		} else {
-			var defaultCfgFile string = ".kafka-client-cli.env"
+			var defaultCfgFile string = ".hamilton.env"
 			fmt.Printf("config file not found, reading default config file %s\n", defaultCfgFile)
 			viper.SetConfigFile(defaultCfgFile)
 		}

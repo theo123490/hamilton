@@ -1,4 +1,4 @@
-module github.com/theo123490/kafka-client-cli
+module github.com/theo123490/hamilton
 
 go 1.21.4
 
